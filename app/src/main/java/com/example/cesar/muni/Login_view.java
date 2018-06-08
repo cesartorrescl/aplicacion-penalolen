@@ -31,14 +31,14 @@ import java.util.Map;
 
 public class Login_view extends AppCompatActivity {
 
-
+    Global claseGlobal = new Global();
 
     private volleyy volley;
     protected RequestQueue fRequestQueue;
 
     private Context ctx;
-
-    private String url = "http://192.168.1.92:8000/api/details";
+    private String ip = claseGlobal.getIp();
+    //private String url = ip + "api/details";
 
     private Button iniciar;
     private Button registrarse;
@@ -72,16 +72,7 @@ public class Login_view extends AppCompatActivity {
         iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 makeRequest2(user.getText().toString(),pass.getText().toString());
-
-
-
-
-
-
-
-
 
             }
         });
@@ -92,7 +83,7 @@ public class Login_view extends AppCompatActivity {
 
 
     private void makeRequest(){
-        String url = "http://192.168.43.161/api-2/public/api/details";
+        String url = ip + "api-2/public/api/details";
         JsonObjectRequest  request = new JsonObjectRequest (Request.Method.POST,url,null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonArray) {
@@ -121,7 +112,7 @@ public class Login_view extends AppCompatActivity {
 
 
     private boolean makeRequest2(final String user, final String pass){
-        String url = "http://192.168.43.161/api-2/public/api/login2";
+        String url = ip + "api-2/public/api/login2";
 
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>()

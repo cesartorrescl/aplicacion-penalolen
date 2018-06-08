@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Home_reciclador extends AppCompatActivity {
+    Global claseGlobal = new Global();
+    private String ip = claseGlobal.getIp();
 
     TextView usuario;
     private volleyy volley;
@@ -49,12 +51,11 @@ public class Home_reciclador extends AppCompatActivity {
     }
 
     private void makeRequest(){
-        String url = "http://192.168.43.161/api-2/public/api/details";
+        String url = ip + "api-2/public/api/details";
         JsonObjectRequest request = new JsonObjectRequest (Request.Method.POST,url,null, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject jsonArray) {
                 usuario.setText(jsonArray.toString());
-
 
             }
         }, new Response.ErrorListener() {
