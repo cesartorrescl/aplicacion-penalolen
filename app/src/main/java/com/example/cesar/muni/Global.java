@@ -5,7 +5,7 @@ public class Global {
     private String ip;
 
     public Global() {
-        this.ip = "http://localhost/";
+        this.ip = "http://192.168.0.16/";
     }
 
     public String getIp() {

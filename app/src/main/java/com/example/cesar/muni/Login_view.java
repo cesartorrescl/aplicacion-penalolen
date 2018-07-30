@@ -76,6 +76,13 @@ public class Login_view extends AppCompatActivity {
 
             }
         });
+        registrarse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ctx,register_view.class);
+                startActivity(intent);
+            }
+        });
 
 
     }
@@ -112,7 +119,7 @@ public class Login_view extends AppCompatActivity {
 
 
     private boolean makeRequest2(final String user, final String pass){
-        String url = ip + "api-2/public/api/login2";
+        String url = ip + "api-penalolen/public/api/login2";
 
         StringRequest postRequest = new StringRequest(Request.Method.POST, url,
                 new Response.Listener<String>()
@@ -126,7 +133,7 @@ public class Login_view extends AppCompatActivity {
                             e.printStackTrace();
                             Toast.makeText(ctx,"Usuario o contraseña incorrectos",Toast.LENGTH_LONG).show();
                         }
-                        p= null;
+                        p = null;
                         try {
                             p = respuesta.getJSONObject("success").get("token").toString();
                             Intent intent = new Intent(ctx,Home_reciclador.class);
